@@ -1,5 +1,6 @@
 /vendor
 /.idea
 .env
-/data
-/tests/ci
+/tests/data
+/ci
+tests\_output\*

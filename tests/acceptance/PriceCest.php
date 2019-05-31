@@ -54,6 +54,10 @@ class PriceCest
     public function grabPriceTuristo(AcceptanceTester $I)
     {
         $I->amOnUrl(page::$urlTuristo2);
+
+
+
+
 //        $I->wait(3);
 //        $I->fillField(page::$fromTuristo, 'Аэропорт Львов имени Даниила Галицкого');
 //        $I->click(page::$openPassengerTuristo);
