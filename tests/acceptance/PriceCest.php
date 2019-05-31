@@ -54,10 +54,6 @@ class PriceCest
     public function grabPriceTuristo(AcceptanceTester $I)
     {
         $I->amOnUrl(page::$urlTuristo2);
-
-
-
-
 //        $I->wait(3);
 //        $I->fillField(page::$fromTuristo, 'Аэропорт Львов имени Даниила Галицкого');
 //        $I->click(page::$openPassengerTuristo);
@@ -115,7 +111,7 @@ class PriceCest
 //        $I->click(page::$monthDepartTickets);
 //        $I->click(page::$monthDepartTickets);
 //        $I->click(page::$monthDepartTickets);
-//
+///ci
 //        $I->click(page::$dayDepartTickets);
 //        $I->click(page::$dayReturnTickets);
 //
@@ -137,6 +133,4 @@ class PriceCest
 
         $I->assertSame($beforePrice, $currentPrice);
     }
-
-
 }
