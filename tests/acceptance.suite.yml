@@ -1,0 +1,32 @@
+
+actor: AcceptanceTester
+modules:
+  enabled:
+    - WebDriver:
+        url:  https://www.qatarairways.com/en-ua/homepage.html
+        browser: chrome
+        windows size: false
+    - \Helper\Acceptance
+    - Asserts
+
+env:
+  headless:
+    modules:
+      config:
+        WebDriver:
+          url:  https://www.qatarairways.com/en-ua/homepage.html
+          browser: chrome
+          window_size: false
+          capabilities:
+            chromeOptions:
+              args: ["--headless","--disable-gpu", "--window-size=1920,1080"] # "--headless"
+  chrome:
+    modules:
+      config:
+        WebDriver:
+          url:  https://www.qatarairways.com/en-ua/homepage.html
+          browser: chrome
+          window_size: false
+          capabilities:
+            chromeOptions:
+              args: ["--disable-gpu", "--window-size=1920,1080"] # "--headless"

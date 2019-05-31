@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Line Chart</title>
+    <link rel="icon" href="https://img.icons8.com/ios-glyphs/100/000000/airplane-mode-on.png" type="image/x-icon">
+    <script src="QatarPrice.js"></script>
+    <script src="TuristoPrice.js"></script>
+    <script src="TicketsPrice.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
+</head>
+<body style="margin: 0;">
+<canvas id="myChart" width="400" height="150"></canvas>
+
+<br>
+<br>
+Price Type
+<select id="type">
+    <option value="line">Line</option>
+    <option value="bar">Bar</option>
+</select>
+<button id="update">update</button>
+
+
+<script>
+    QatarPrice = JSON.parse(QatarPrice);
+    TuristoPrice = JSON.parse(TuristoPrice);
+    TicketsPrice = JSON.parse(TicketsPrice);
+    let labels = QatarPrice.concat(TuristoPrice).concat(TicketsPrice).sort((item, nextItem) => item.date - nextItem.date).map((item) => moment(new Date(item.date * 1000)).format('MMMM DD YYYY'));
+    console.log(QatarPrice, TuristoPrice, TicketsPrice);
+    console.log(labels);
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels  : labels,
+            datasets: [
+                {
+                    label          : 'QatarPrice',
+                    data           : QatarPrice.map((item) => parseInt(item.price.split(' ').join(''))),
+                    borderWidth    : 2,
+                    borderColor    : 'red',
+                    backgroundColor: 'rgba(255, 0, 0, 0.2)',
+
+                },
+                {
+                    label          : 'TuristoPrice',
+                    data           : TuristoPrice.map((item) => parseInt(item.price.split(' ').join(''))),
+                    borderWidth    : 2,
+                    borderColor    : 'blue',
+                    backgroundColor: 'rgba(0, 0, 255, 0.2)',
+                },
+                {
+                    label          : 'TicketsPrice',
+                    data           : TicketsPrice.map((item) => parseInt(item.price.split(' ').join(''))),
+                    borderWidth    : 2,
+                    borderColor    : 'green',
+                    backgroundColor: 'rgba(0, 255, 0, 0.2)',
+                }
+            ]
+        },
+    });
+</script>
+</body>
+</html>
+
